@@ -18,8 +18,9 @@ namespace TodoAzure
 				bool authenticated = await App.AuthenticationProvider.LoginAsync(true);
 				if (authenticated)
 				{
-					Navigation.InsertPageBefore(new TodoList(), this);
-					await Navigation.PopAsync();
+					//Navigation.InsertPageBefore(new TodoList(), this);
+                    Navigation.InsertPageBefore(new PrepMedia(), this);
+                    await Navigation.PopAsync();
 				}
 			}
 			catch
@@ -37,8 +38,9 @@ namespace TodoAzure
 				bool authenticated = await App.AuthenticationProvider.LoginAsync();
 				if (authenticated)
 				{
-					Navigation.InsertPageBefore(new TodoList(), this);
-					await Navigation.PopAsync();
+					//Navigation.InsertPageBefore(new TodoList(), this);
+                    Navigation.InsertPageBefore(new PrepMedia(), this); 
+                    await Navigation.PopAsync();
 				}
 				else
 				{
