@@ -7,8 +7,10 @@ namespace TodoAzure
 	public partial class TodoList : ContentPage
 	{
 		TodoItemManager manager;
+        // Track whether the user has authenticated.
+        bool authenticated = false;
 
-		public TodoList()
+        public TodoList()
 		{
 			InitializeComponent();
 
@@ -19,8 +21,17 @@ namespace TodoAzure
 		{
 			base.OnAppearing();
 
-			await RefreshItems(true, syncItems: false);
-		}
+            // Refresh items only when authenticated.
+            if (authenticated == true)
+            {
+                // Set syncItems to true in order to synchronize the data
+                // on startup when running in offline mode.
+                await RefreshItems(true, syncItems: false);
+
+                // Hide the Sign-in button.
+                //this.loginButton.IsVisible = false;
+            }
+        }
 
 		// Data methods
 		async Task AddItem(TodoItem item)
